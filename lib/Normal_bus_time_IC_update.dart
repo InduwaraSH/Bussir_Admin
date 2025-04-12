@@ -31,24 +31,39 @@ class _Normal_bustime_ICState extends State<Normal_bustime_IC> {
         children: [
           TextField(
             controller: busStartLocationController,
-            decoration: InputDecoration(labelText: 'Bus Start Location'),
+            decoration: InputDecoration(labelText: 'Start Location'),
           ),
           TextField(
             controller: busEndLocationController,
-            decoration: InputDecoration(labelText: 'Bus End Location'),
+            decoration: InputDecoration(labelText: 'End Location'),
           ),
           TextField(
             controller: busStartTimeController,
-            decoration: InputDecoration(labelText: 'Bus Start Time'),
+            decoration: InputDecoration(labelText: 'Start Time'),
           ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     String startLocation = busStartLocationController.text;
-          //     String endLocation = busEndLocationController.text;
-          //     String startTime = busStartTimeController.text;
-          //   },
-          //   child: Text('Add Bus Time'),
-          // ),
+          ElevatedButton(
+            onPressed: () {
+              Map<String, String> normalbustimetableIc = {
+                'Start Location': busStartLocationController.text,
+                'End Location': busEndLocationController.text,
+                'Start Time': busStartTimeController.text,
+              };
+              databaseReference
+                  .push()
+                  .set(normalbustimetableIc)
+                  .then((_) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Data Updated Successfully')),
+                    );
+                  })
+                  .catchError((error) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Failed to update data: $error')),
+                    );
+                  });
+            },
+            child: Text('Update Bus Time Table'),
+          ),
         ],
       ),
     );
