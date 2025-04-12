@@ -1,3 +1,4 @@
+import 'package:bussir_admin/bus_time_table_update.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,7 +26,23 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Home Page')),
-      body: Center(child: Text('Welcome to My Home Page!')),
-  );
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Bus_time_t_update(),
+                  ),
+                );
+              },
+              child: const Text('Update Bus Time Table'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
