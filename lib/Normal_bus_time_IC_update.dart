@@ -12,6 +12,9 @@ class _Normal_bustime_ICState extends State<Normal_bustime_IC> {
   final busStartLocationController = TextEditingController();
   final busEndLocationController = TextEditingController();
   final busStartTimeController = TextEditingController();
+  final busNmberController = TextEditingController();
+  final busdriverNameController = TextEditingController();
+  final busTPnumberController = TextEditingController();
 
   late DatabaseReference databaseReference;
 
@@ -41,12 +44,27 @@ class _Normal_bustime_ICState extends State<Normal_bustime_IC> {
             controller: busStartTimeController,
             decoration: InputDecoration(labelText: 'Start Time'),
           ),
+          TextField(
+            controller: busNmberController,
+            decoration: InputDecoration(labelText: 'Bus Number'),
+          ),
+          TextField(
+            controller: busdriverNameController,
+            decoration: InputDecoration(labelText: 'Driver Name'),
+          ),
+          TextField(
+            controller: busTPnumberController,
+            decoration: InputDecoration(labelText: 'Driver TP Number'),
+          ),
           ElevatedButton(
             onPressed: () {
               Map<String, String> normalbustimetableIc = {
                 'Start Location': busStartLocationController.text,
                 'End Location': busEndLocationController.text,
                 'Start Time': busStartTimeController.text,
+                'Bus Number': busNmberController.text,
+                'Driver Name': busdriverNameController.text,
+                'Driver TP Number': busTPnumberController.text,
               };
               databaseReference
                   .push()
