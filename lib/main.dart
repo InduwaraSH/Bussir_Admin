@@ -1,4 +1,5 @@
 import 'package:bussir_admin/bus_time_table_update.dart';
+import 'package:bussir_admin/ticket.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,16 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: const Text('Update Bus Time Table'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ticketissue()),
+                );
+              },
+              child: const Text('Issue ticket'),
             ),
           ],
         ),
