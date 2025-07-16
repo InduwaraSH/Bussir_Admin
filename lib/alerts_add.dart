@@ -11,15 +11,14 @@ class AlertUpdate extends StatefulWidget {
 class _AlertUpdateState extends State<AlertUpdate> {
   final alert_title = TextEditingController();
   final alert_description = TextEditingController();
+  final alert_type = TextEditingController();
 
   late DatabaseReference databaseReference;
 
   @override
   void initState() {
     super.initState();
-    databaseReference = FirebaseDatabase.instance.ref().child(
-      'Alerts',
-    );
+    databaseReference = FirebaseDatabase.instance.ref().child('Alerts');
   }
 
   @override
@@ -38,13 +37,18 @@ class _AlertUpdateState extends State<AlertUpdate> {
               controller: alert_description,
               decoration: InputDecoration(labelText: 'Alert_Description'),
             ),
-            
+            TextField(
+              controller: alert_type,
+              decoration: InputDecoration(labelText: 'Alert_Type'),
+            ),
+            SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: () {
                 Map<String, String> alertData = {
                   'Alert_Title': alert_title.text,
                   'Alert_Description': alert_description.text,
-                
+                  'Alert_Type': alert_type.text,
                 };
                 databaseReference
                     .push()
