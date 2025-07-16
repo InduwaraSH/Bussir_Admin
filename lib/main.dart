@@ -1,3 +1,4 @@
+import 'package:bussir_admin/alerts_add.dart';
 import 'package:bussir_admin/bus_time_table_update.dart';
 import 'package:bussir_admin/issuetkt_hgw.dart';
 import 'package:bussir_admin/ticket.dart';
@@ -64,6 +65,16 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: const Text('Issue ticket Hgw'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AlertUpdate()),
+                );
+              },
+              child: const Text('Add a new alert'),
             ),
           ],
         ),
